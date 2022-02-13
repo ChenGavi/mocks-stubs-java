@@ -75,12 +75,12 @@ class UserServiceTest {
         when(stubUserRepository.findByEmail("other@user.com"))
                 .thenThrow(new NotFoundException());
 
-//        final var userService = new UserService(new StubUserRepository(), mockEmailService);
-//        userService.sendRegisteredPhoneNumber("other@user.com");
-//        final var expected = new EmailBody("Account Not Found",
-//                "We do not have a registered account matching your email address", "other@user.com");
-////        final var actual = mockEmailService.getLastEmail();
-////        assertEquals(expected, actual);
-//        verify(mockEmailService).send(expected);
+        final var userService = new UserService(new StubUserRepository(), mockEmailService);
+        userService.sendRegisteredPhoneNumber("other@user.com");
+        final var expected = new EmailBody("Account Not Found",
+                "We do not have a registered account matching your email address", "other@user.com");
+//        final var actual = mockEmailService.getLastEmail();
+//        assertEquals(expected, actual);
+        verify(mockEmailService).send(expected);
     }
 }

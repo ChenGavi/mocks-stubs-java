@@ -5,16 +5,7 @@ import lombok.ToString;
 import java.util.Objects;
 
 @ToString
-public class EmailBody {
-    public final String subject;
-    public final String body;
-    public final String receiver;
-
-    public EmailBody(String subject, String body, String receiver) {
-        this.subject = subject;
-        this.body = body;
-        this.receiver = receiver;
-    }
+public record EmailBody(String subject, String body, String receiver) {
 
     @Override
     public boolean equals(Object o) {
